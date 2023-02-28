@@ -1,3 +1,5 @@
+package calculator;
+
 public class Converter {
     public double methodeKmToMiles(double kilometers) {
         return kilometers / 1.6;

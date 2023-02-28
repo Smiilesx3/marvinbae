@@ -1,4 +1,12 @@
+package controller;
+
+import calculator.Calculator;
+import calculator.Converter;
+import farmyard.allAnimals.Cow; //why tho
+
 import java.util.Scanner;
+
+import static farmyard.allAnimals.Cow.createCow;
 
 public class Runner {
     public static void main(String[] args) {
@@ -16,6 +24,7 @@ public class Runner {
                 for calculating, type '1'\s
                 for converting distances, type '2'\s
                 for converting different time formats, type '3'\s
+                for starting the farmyard simulator, type '4'\s
                 """);
 
         menuChoice = scannerVariable.nextInt();
@@ -99,6 +108,26 @@ public class Runner {
                     }
                     default -> System.out.println("this option doesn't exist");
                 }
+            }
+            // farm shit ass fuck cow test
+            case 4 -> {
+
+                System.out.println("Insert the name of the cow");
+                String cowName = scannerVariable.next();
+                System.out.println("Insert the Sound of the cow");
+                String cowSound = scannerVariable.next();
+                System.out.println("Insert the weight of the cow");
+                double cowWeight = scannerVariable.nextDouble();
+                System.out.println("Insert the amount of milk of the cow in Liters");
+                double cowMilk = scannerVariable.nextDouble();
+                System.out.println("type false because its not hungry rn");
+                boolean cowHunger = scannerVariable.nextBoolean();
+
+
+                createCow(cowName,cowSound,cowWeight,cowMilk,cowHunger);
+
+
+
             }
             default -> System.out.println("this option doesn't exist");
         }

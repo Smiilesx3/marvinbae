@@ -1,3 +1,5 @@
+package calculator;
+
 public class Calculator {
     public double methodeAddition(double Zahl1, double Zahl2) {
         return Zahl1 + Zahl2;
