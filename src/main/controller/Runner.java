@@ -15,6 +15,7 @@ public class Runner {
     public static void main(String[] args) {
 
         //Anfang do while
+        Farm farm = new Farm();
 
 
         int menuChoice; //case variable - chose what to do
@@ -130,7 +131,6 @@ public class Runner {
                             """);
 
                     int farmyard = scannerVariable.nextInt();
-                    Farm farm = new Farm();
 
                     switch (farmyard) {
 
