@@ -1,19 +1,28 @@
 package farmyard.allAnimals;
 
-public class Cow {
-double milkAmount;
+import java.util.Random;
 
-public static void createCow(String name, String sound, double weight, double milk, boolean hunger){
-    String cowName = name;
-    String cowSound = sound;
-    double cowWeight = weight;
-    double cowMilk = milk;
-    boolean cowHunger = hunger;
-
-    System.out.println("a new Cow lives on the farm now. Its name is " + cowName +
-            ", its happily " + cowSound + "ing, it weights about " + cowWeight + "kilogram");
-
-}
+public class Cow extends AbstractFarmAnimal {
 
 
+    public Cow(int age, double weight, String name) {
+        super(age, weight, name);
+    }
+
+    @Override
+    public void doAction() {
+        if (isHungry()) {
+            System.out.println("This animal is hungry");
+        } else {
+            Random random = new Random();
+            int givenMilk = random.nextInt(10) + 1;
+            System.out.println(this.getName() + " gave " + givenMilk + " liters milk.");
+            this.setHungry(true);
+        }
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println(this.getName() + " makes moo moo");
+    }
 }

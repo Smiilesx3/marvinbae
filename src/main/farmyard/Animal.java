@@ -1,9 +1,12 @@
 package farmyard;
 
-public interface Animal{
+public interface Animal {
+
+
     boolean isHungry();
 
     void makeSound();
 
     void doAction();
+
 }
