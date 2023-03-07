@@ -6,6 +6,8 @@ import java.util.Random;
 public class Chicken extends AbstractFarmAnimal {
 
 
+
+
     public Chicken(int age, double weight, String name) {
         super(age, weight, name);
 
