@@ -11,8 +11,9 @@ public class Dog extends AbstractFarmAnimal {
         if (isHungry()) {
             System.out.println("This animal is hungry");
         } else {
-            System.out.printf("you played fetch with %s", getName());
+           // System.out.printf("%n you played fetch with %s", getName());
             this.setHungry(true);
+            System.out.println("you played fetch with " + this.getName());
         }
     }
 

@@ -12,7 +12,8 @@ public class Pig extends AbstractFarmAnimal {
             System.out.println("This animal is hungry");
         } else {
             this.setHungry(true);
-            System.out.printf("%s just took a nap", getName());
+            //System.out.printf("%s just took a nap", getName());
+            System.out.println(this.getName() + " just took a nap");
         }
     }
 

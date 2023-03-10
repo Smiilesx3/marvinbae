@@ -16,7 +16,7 @@ public class Cow extends AbstractFarmAnimal {
         } else {
             Random random = new Random();
             int givenMilk = random.nextInt(10) + 1;
-            System.out.println(this.getName() + " gave " + givenMilk + " liters milk.");
+            System.out.println(this.getName() + " gave " + givenMilk + " litres milk.");
             this.setHungry(true);
         }
     }
