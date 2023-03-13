@@ -3,6 +3,10 @@ package controller;
 import calculator.Calculator;
 import calculator.Converter;
 import farmyard.Farm;
+import farmyard.Shed.ChickenShed;
+import farmyard.Shed.CowShed;
+import farmyard.Shed.DogShed;
+import farmyard.Shed.PigShed;
 import farmyard.allAnimals.Chicken;
 import farmyard.allAnimals.Cow;
 import farmyard.allAnimals.Dog;
@@ -16,6 +20,10 @@ public class Runner {
 
         //Anfang do while
         Farm farm = new Farm();
+        PigShed pigShed = new PigShed();
+        CowShed cowShed = new CowShed();
+        DogShed dogShed = new DogShed();
+        ChickenShed chickenShed = new ChickenShed();
 
 
         int menuChoice; //case variable - chose what to do
@@ -49,12 +57,12 @@ public class Runner {
                     number2 = scannerVariable.nextDouble();
                     Calculator math = new Calculator();
                     double addition = math.methodeAddition(number1, number2);
-                    double subtraktion = math.methodeSubtraction(number1, number2);
-                    double multiplikation = math.methodeMulitplication(number1, number2);
+                    double subtraction = math.methodeSubtraction(number1, number2);
+                    double multiplication = math.methodeMulitplication(number1, number2);
                     double division = math.methodeDivision(number1, number2);
                     System.out.println("The result of the addition is: " + addition);
-                    System.out.println("The result of the subtraction is: " + subtraktion);
-                    System.out.println("The result of the multiplication is: " + multiplikation);
+                    System.out.println("The result of the subtraction is: " + subtraction);
+                    System.out.println("The result of the multiplication is: " + multiplication);
                     System.out.println("The result of the division is: " + division);
                 }
 
@@ -165,6 +173,7 @@ public class Runner {
                                     farm.addAnimal(chicken);
 
 
+
                                 }
                                 case 2 -> {
                                     System.out.println("type cow name");
@@ -193,7 +202,7 @@ public class Runner {
                                     double dogWeight = scannerVariable.nextDouble();
 
 
-                                    Dog dog = new Dog(dogAge, dogWeight,  dogName);
+                                    Dog dog = new Dog(dogAge, dogWeight, dogName);
                                     System.out.println("Name: " + dog.getName() +
                                             " Age: " + dog.getAge() +
                                             " Weight: " + dog.getWeight());
