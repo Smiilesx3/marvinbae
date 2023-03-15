@@ -225,13 +225,9 @@ public class Runner {
                                 }
                             }
                         }
-                        case 2 -> {
-                            farm.giveAnimalList();
-
-                        }
+                        case 2 -> farm.giveAnimalList();
                         case 3 -> {
                             farm.countAnimals();
-
                         }
                         case 4 -> {
                             farm.actionAnimals();

@@ -18,13 +18,13 @@ public class CowShed implements Shed {
     // cow gives milk and gets hungry
     public void cowAction() {
         for (Cow cow : cowList) {
-            if (cow.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+            if (cow.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
                 cow.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
                 cow.doAction();
-            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+            } else if (cow.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
                 cow.setLevelOfHungriness(LevelOfHungriness.HUNGRY.getHungriness());
                 cow.doAction();
-            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+            } else if (cow.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
                 System.out.println(cow.getName() + " can't do its action because it's hungry");
             }
         }
@@ -41,13 +41,13 @@ public class CowShed implements Shed {
     @Override
     public void feedAnimals() {
         for (Cow cow : cowList) {
-            if (cow.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+            if (cow.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
                 cow.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
                 System.out.println(cow.getName() + " was fed and looks saturated");
-            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+            } else if (cow.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
                 cow.setLevelOfHungriness(LevelOfHungriness.OVEREAT.getHungriness());
                 System.out.println(cow.getName() + " was fed and looks really overeaten");
-            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+            } else if (cow.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
                 System.out.println(cow.getName() + " cant be fed because its full");
             }
         }

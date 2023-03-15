@@ -19,22 +19,22 @@ public class DogShed implements Shed {
     //play with dog and dog gets hungry
     public void dogAction() {
         for (Dog dog : dogList) {
-            dog.doAction();
+            if (dog.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
+                dog.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
+                dog.doAction();
+            } else if (dog.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
+                dog.setLevelOfHungriness(LevelOfHungriness.HUNGRY.getHungriness());
+                dog.doAction();
+            } else if (dog.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
+                System.out.println(dog.getName() + " can't do its action because it's hungry");
+            }
         }
     }
 
     // dog makes sound
     public void actionSound() {
         for (Dog dog : dogList) {
-            if (dog.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
-                dog.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
-                dog.doAction();
-            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
-                dog.setLevelOfHungriness(LevelOfHungriness.HUNGRY.getHungriness());
-                dog.doAction();
-            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
-                System.out.println(dog.getName() + " can't do its action because it's hungry");
-            }
+            dog.makeSound();
         }
     }
 
@@ -42,13 +42,13 @@ public class DogShed implements Shed {
     @Override
     public void feedAnimals() {
         for (Dog dog : dogList) {
-            if (dog.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+            if (dog.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
                 dog.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
                 System.out.println(dog.getName() + " was fed and looks saturated");
-            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+            } else if (dog.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
                 dog.setLevelOfHungriness(LevelOfHungriness.OVEREAT.getHungriness());
                 System.out.println(dog.getName() + " was fed and looks really overeaten");
-            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+            } else if (dog.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
                 System.out.println(dog.getName() + " cant be fed because its full");
             }
         }

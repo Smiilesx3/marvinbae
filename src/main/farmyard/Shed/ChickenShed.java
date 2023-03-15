@@ -18,13 +18,13 @@ public class ChickenShed implements Shed {
     //chicken lays egg/s and gets hungry
     public void chickenAction() {
         for (Chicken chicken : chickenList) {
-            if (chicken.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+            if (chicken.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
                 chicken.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
                 chicken.doAction();
-            } else if (chicken.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+            } else if (chicken.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
                 chicken.setLevelOfHungriness(LevelOfHungriness.HUNGRY.getHungriness());
                 chicken.doAction();
-            } else if (chicken.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+            } else if (chicken.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
                 System.out.println(chicken.getName() + " can't do its action because it's hungry");
             }
         }
@@ -43,13 +43,13 @@ public class ChickenShed implements Shed {
     @Override
     public void feedAnimals() {
         for (Chicken chicken : chickenList) {
-            if (chicken.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+            if (chicken.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
                 chicken.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
                 System.out.println(chicken.getName() + " was fed and looks saturated");
-            } else if (chicken.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+            } else if (chicken.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
                 chicken.setLevelOfHungriness(LevelOfHungriness.OVEREAT.getHungriness());
                 System.out.println(chicken.getName() + " was fed and looks really overeaten");
-            } else if (chicken.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+            } else if (chicken.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
                 System.out.println(chicken.getName() + " cant be fed because its full");
             }
         }
