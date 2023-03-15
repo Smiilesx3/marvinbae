@@ -1,6 +1,7 @@
 package farmyard.Shed;
 
 import farmyard.allAnimals.Dog;
+import farmyard.allAnimals.LevelOfHungriness;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,22 +26,34 @@ public class DogShed implements Shed {
     // dog makes sound
     public void actionSound() {
         for (Dog dog : dogList) {
-            dog.makeSound();
+            if (dog.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+                dog.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
+                dog.doAction();
+            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+                dog.setLevelOfHungriness(LevelOfHungriness.HUNGRY.getHungriness());
+                dog.doAction();
+            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+                System.out.println(dog.getName() + " can't do its action because it's hungry");
+            }
         }
     }
 
     // feed dogs
     @Override
     public void feedAnimals() {
-        for (Dog farmDog : dogList) {
-            if (farmDog.isHungry()) {
-                farmDog.setHungry(false);
-                System.out.println(farmDog.getName() + "was fed");
-            } else {
-                System.out.println(farmDog.getName() + "isn't hungry");
+        for (Dog dog : dogList) {
+            if (dog.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+                dog.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
+                System.out.println(dog.getName() + " was fed and looks saturated");
+            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+                dog.setLevelOfHungriness(LevelOfHungriness.OVEREAT.getHungriness());
+                System.out.println(dog.getName() + " was fed and looks really overeaten");
+            } else if (dog.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+                System.out.println(dog.getName() + " cant be fed because its full");
             }
         }
     }
+
 
     //print dog list
     @Override

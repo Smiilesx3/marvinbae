@@ -3,14 +3,7 @@ package controller;
 import calculator.Calculator;
 import calculator.Converter;
 import farmyard.Farm;
-import farmyard.Shed.ChickenShed;
-import farmyard.Shed.CowShed;
-import farmyard.Shed.DogShed;
-import farmyard.Shed.PigShed;
-import farmyard.allAnimals.Chicken;
-import farmyard.allAnimals.Cow;
-import farmyard.allAnimals.Dog;
-import farmyard.allAnimals.Pig;
+import farmyard.allAnimals.*;
 
 import java.util.Scanner;
 
@@ -18,12 +11,8 @@ import java.util.Scanner;
 public class Runner {
     public static void main(String[] args) {
 
-        //Anfang do while
+        //Begin do while
         Farm farm = new Farm();
-        PigShed pigShed = new PigShed();
-        CowShed cowShed = new CowShed();
-        DogShed dogShed = new DogShed();
-        ChickenShed chickenShed = new ChickenShed();
 
 
         int menuChoice; //case variable - chose what to do
@@ -71,8 +60,8 @@ public class Runner {
                     System.out.println("""
                             Choose what you want to do:\s
                             \s
-                            for converting kilometers to miles type '1'\s
-                            for converting miles to kilometers type '2'\s
+                            [1]for converting kilometers to miles type\s
+                            [2]for converting miles to kilometers type\s
                             """);
 
 
@@ -99,8 +88,8 @@ public class Runner {
                     System.out.println("""
                             Choose what you want to do:\s
                             \s
-                            for converting format hh:mm:ss to mm:ss, type '1'\s
-                            for converting format mm:ss to hh:mm:ss, type '2'\s
+                            [1]for converting format hh:mm:ss to mm:ss, type\s
+                            [2]for converting format mm:ss to hh:mm:ss, type\s
                             """);
                     int conversionChoiceTimeFormat = scannerVariable.nextInt();
 
@@ -146,10 +135,11 @@ public class Runner {
                             System.out.println("""
                                     Choose what you want to do:\s
                                     \s
-                                    create a chicken '1'\s
-                                    create a cow '2'\s
-                                    create a dog '3'\s
-                                    create a pig '4'\s
+                                    [1]create a chicken\s
+                                    [2]create a cow\s
+                                    [3]create a dog\s
+                                    [4]create a pig\s
+                                    [5]create a bunch of test animals\s
                                     """);
                             int createAnimal = scannerVariable.nextInt();
                             switch (createAnimal) {
@@ -164,14 +154,14 @@ public class Runner {
                                     double chickenWeight = scannerVariable.nextDouble();
 
 
-                                    Chicken chicken = new Chicken(chickenAge, chickenWeight, chickenName);
+                                    Chicken chicken = new Chicken(chickenAge, chickenWeight, chickenName,
+                                            LevelOfHungriness.SATURATED.getHungriness());
                                     System.out.println("Name: " + chicken.getName() +
                                             " Age: " + chicken.getAge() +
                                             " Weight: " + chicken.getWeight());
 
                                     chicken.makeSound();
                                     farm.addAnimal(chicken);
-
 
 
                                 }
@@ -184,7 +174,7 @@ public class Runner {
                                     double cowWeight = scannerVariable.nextDouble();
 
 
-                                    Cow cow = new Cow(cowAge, cowWeight, cowName);
+                                    Cow cow = new Cow(cowAge, cowWeight, cowName, LevelOfHungriness.SATURATED.getHungriness());
                                     System.out.println("Name: " + cow.getName() +
                                             " Age: " + cow.getAge() +
                                             " Weight: " + cow.getWeight());
@@ -202,7 +192,7 @@ public class Runner {
                                     double dogWeight = scannerVariable.nextDouble();
 
 
-                                    Dog dog = new Dog(dogAge, dogWeight, dogName);
+                                    Dog dog = new Dog(dogAge, dogWeight, dogName, LevelOfHungriness.SATURATED.getHungriness());
                                     System.out.println("Name: " + dog.getName() +
                                             " Age: " + dog.getAge() +
                                             " Weight: " + dog.getWeight());
@@ -219,7 +209,7 @@ public class Runner {
                                     double pigWeight = scannerVariable.nextDouble();
 
 
-                                    Pig pig = new Pig(pigAge, pigWeight, pigName);
+                                    Pig pig = new Pig(pigAge, pigWeight, pigName, LevelOfHungriness.SATURATED.getHungriness());
                                     System.out.println("Name: " + pig.getName() +
                                             " Age: " + pig.getAge() +
                                             " Weight: " + pig.getWeight());
@@ -227,6 +217,11 @@ public class Runner {
                                     pig.makeSound();
                                     farm.addAnimal(pig);
 
+                                }
+
+                                case 5 -> {
+                                    farm.addTestAnimal();
+                                    System.out.println("Test animals were created");
                                 }
                             }
                         }
@@ -258,7 +253,7 @@ public class Runner {
                 }
                 default -> System.out.println("this option doesn't exist");
             }
-            //abfrage obs weitergeht
+            //request if loop or end
             System.out.println("""
                                                 
                                                 

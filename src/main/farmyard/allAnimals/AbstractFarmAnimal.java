@@ -3,8 +3,8 @@ package farmyard.allAnimals;
 public abstract class AbstractFarmAnimal extends AbstractAnimal {
     private final String name;
 
-    public AbstractFarmAnimal(int age, double weight, String name) {
-        super(age, weight);
+    public AbstractFarmAnimal(int age, double weight, String name, String levelOfHungriness) {
+        super(age, weight, levelOfHungriness);
         this.name = name;
     }
 

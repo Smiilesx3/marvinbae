@@ -1,7 +1,7 @@
 package farmyard.Shed;
 
-import farmyard.allAnimals.AbstractFarmAnimal;
 import farmyard.allAnimals.Cow;
+import farmyard.allAnimals.LevelOfHungriness;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,15 @@ public class CowShed implements Shed {
     // cow gives milk and gets hungry
     public void cowAction() {
         for (Cow cow : cowList) {
-            cow.doAction();
+            if (cow.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+                cow.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
+                cow.doAction();
+            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+                cow.setLevelOfHungriness(LevelOfHungriness.HUNGRY.getHungriness());
+                cow.doAction();
+            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+                System.out.println(cow.getName() + " can't do its action because it's hungry");
+            }
         }
     }
 
@@ -32,15 +40,19 @@ public class CowShed implements Shed {
     // feed cows
     @Override
     public void feedAnimals() {
-        for (AbstractFarmAnimal farmAnimal : cowList) {
-            if (farmAnimal.isHungry()) {
-                farmAnimal.setHungry(false);
-                System.out.println(farmAnimal.getName() + "was fed");
-            } else {
-                System.out.println(farmAnimal.getName() + "isn't hungry");
+        for (Cow cow : cowList) {
+            if (cow.getLevelOfHungriness() == LevelOfHungriness.HUNGRY.getHungriness()) {
+                cow.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
+                System.out.println(cow.getName() + " was fed and looks saturated");
+            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.SATURATED.getHungriness()) {
+                cow.setLevelOfHungriness(LevelOfHungriness.OVEREAT.getHungriness());
+                System.out.println(cow.getName() + " was fed and looks really overeaten");
+            } else if (cow.getLevelOfHungriness() == LevelOfHungriness.OVEREAT.getHungriness()) {
+                System.out.println(cow.getName() + " cant be fed because its full");
             }
         }
     }
+
 
     // print cow list
     @Override

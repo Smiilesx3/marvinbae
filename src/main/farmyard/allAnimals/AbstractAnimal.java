@@ -4,14 +4,16 @@ import farmyard.Animal;
 
 public abstract class AbstractAnimal implements Animal {
 
-    private boolean isHungry;
+
     private double weight;
     private int age;
+    private String levelOfHungriness;
 
 
-    public AbstractAnimal(int age, double weight) {
+    public AbstractAnimal(int age, double weight, String levelOfHungriness) {
         this.age = age;
         this.weight = weight;
+        this.levelOfHungriness = levelOfHungriness;
     }
 
 
@@ -31,13 +33,11 @@ public abstract class AbstractAnimal implements Animal {
         this.weight = weight;
     }
 
-
-    @Override
-    public boolean isHungry() {
-        return isHungry;
+    public String getLevelOfHungriness() {
+        return levelOfHungriness;
     }
 
-    public void setHungry(boolean hungry) {
-        isHungry = hungry;
+    public void setLevelOfHungriness(String levelOfHungriness) {
+        this.levelOfHungriness = levelOfHungriness;
     }
 }

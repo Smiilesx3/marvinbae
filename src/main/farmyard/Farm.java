@@ -20,6 +20,18 @@ public class Farm {
 
     }
 
+    public void addTestAnimal() {
+        Chicken chicken1 = new Chicken(13, 11, "Henriette", LevelOfHungriness.SATURATED.getHungriness());
+        chickenShed.addChicken(chicken1);
+        Cow cow1 = new Cow(8, 230, "Paula", LevelOfHungriness.SATURATED.getHungriness());
+        cowShed.addCow(cow1);
+        Dog dog1 = new Dog(32, 14, "Rufus", LevelOfHungriness.SATURATED.getHungriness());
+        dogShed.addDog(dog1);
+        Pig pig1 = new Pig(42, 150, "Piggy", LevelOfHungriness.SATURATED.getHungriness());
+        pigShed.addPig(pig1);
+
+    }
+
     public void giveAnimalList() {
         chickenShed.getAnimalList();
         cowShed.getAnimalList();
@@ -76,8 +88,7 @@ public class Farm {
         pigShed.actionSound();
 
 
-
-        }
     }
+}
 
 
