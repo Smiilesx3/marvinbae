@@ -1,5 +1,6 @@
 package farmyard.Shed;
 
+import farmyard.allAnimals.LevelOfHungriness;
 import farmyard.allAnimals.Pig;
 
 import java.util.ArrayList;
@@ -17,7 +18,15 @@ public class PigShed implements Shed {
 
     public void pigAction() {
         for (Pig pig : pigList) {
-            pig.doAction();
+            if (pig.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
+                pig.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
+                pig.doAction();
+            } else if (pig.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
+                pig.setLevelOfHungriness(LevelOfHungriness.HUNGRY.getHungriness());
+                pig.doAction();
+            } else if (pig.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
+                System.out.println(pig.getName() + " can't do its action because it's hungry");
+            }
         }
     }
 
@@ -32,14 +41,18 @@ public class PigShed implements Shed {
     @Override
     public void feedAnimals() {
         for (Pig pig : pigList) {
-            if (pig.isHungry()) {
-                pig.setHungry(false);
-                System.out.println(pig.getName() + "was fed");
-            } else {
-                System.out.println(pig.getName() + "isn't hungry");
+            if (pig.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.HUNGRY.getHungriness())) {
+                pig.setLevelOfHungriness(LevelOfHungriness.SATURATED.getHungriness());
+                System.out.println(pig.getName() + " was fed and looks saturated");
+            } else if (pig.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.SATURATED.getHungriness())) {
+                pig.setLevelOfHungriness(LevelOfHungriness.OVEREAT.getHungriness());
+                System.out.println(pig.getName() + " was fed and looks really overeaten");
+            } else if (pig.getLevelOfHungriness().equalsIgnoreCase(LevelOfHungriness.OVEREAT.getHungriness())) {
+                System.out.println(pig.getName() + " cant be fed because its full");
             }
         }
     }
+
 
     // print pig list
     @Override

@@ -6,23 +6,18 @@ import java.util.Random;
 public class Chicken extends AbstractFarmAnimal {
 
 
-    public Chicken(int age, double weight, String name) {
-        super(age, weight, name);
+    public Chicken(int age, double weight, String name, String levelOfHungriness) {
+        super(age, weight, name, levelOfHungriness);
 
     }
 
     @Override
     public void doAction() {
-
-        if (isHungry()) {
-            System.out.println("This animal is hungry");
-        } else {
-            Random random = new Random();
-            int layedEggs = random.nextInt(10) + 1;
-            System.out.println(this.getName() + " layed " + layedEggs + " eggs.");
-            this.setHungry(true);
-        }
+        Random random = new Random();
+        int layedEggs = random.nextInt(10) + 1;
+        System.out.println(this.getName() + " layed " + layedEggs + " eggs.");
     }
+
 
     @Override
     public void makeSound() {
