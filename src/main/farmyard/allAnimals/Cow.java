@@ -9,6 +9,7 @@ public class Cow extends AbstractFarmAnimal {
         super(age, weight, name, levelOfHungriness);
     }
 
+
     @Override
     public void doAction() {
         Random random = new Random();
